@@ -1,0 +1,48 @@
+export const CARDS: card[] = [
+  { value: 1, suit: 'ouro', name: '4 de ouro' },
+  { value: 2, suit: 'espadas', name: '4 de espadas' },
+  { value: 3, suit: 'copas', name: '4 de copas' },
+  { value: 4, suit: 'paus', name: '4 de paus' },
+  { value: 5, suit: 'ouro', name: '5 de ouro' },
+  { value: 6, suit: 'espadas', name: '5 de espadas' },
+  { value: 7, suit: 'copas', name: '5 de copas' },
+  { value: 8, suit: 'paus', name: '5 de paus' },
+  { value: 9, suit: 'ouro', name: '6 de ouro' },
+  { value: 10, suit: 'espadas', name: '6 de espadas' },
+  { value: 11, suit: 'copas', name: '6 de copas' },
+  { value: 12, suit: 'paus', name: '6 de paus' },
+  { value: 13, suit: 'copas', name: '7 de copas' },
+  { value: 14, suit: 'paus', name: '7 de paus' },
+  { value: 15, suit: 'ouro', name: '10 de ouro' },
+  { value: 16, suit: 'espadas', name: '10 de espadas' },
+  { value: 17, suit: 'copas', name: '10 de copas' },
+  { value: 18, suit: 'paus', name: '10 de paus' },
+  { value: 19, suit: 'ouro', name: '11 de ouro' },
+  { value: 20, suit: 'espadas', name: '11 de espadas' },
+  { value: 21, suit: 'copas', name: '11 de copas' },
+  { value: 22, suit: 'paus', name: '11 de paus' },
+  { value: 23, suit: 'ouro', name: '12 de ouro' },
+  { value: 24, suit: 'espadas', name: '12 de espadas' },
+  { value: 25, suit: 'copas', name: '12 de copas' },
+  { value: 26, suit: 'paus', name: '12 de paus' },
+  { value: 27, suit: 'ouro', name: '1 de ouro' },
+  { value: 28, suit: 'espadas', name: '1 de espadas' },
+  { value: 29, suit: 'ouro', name: '2 de ouro' },
+  { value: 30, suit: 'copas', name: '2 de copas' },
+  { value: 31, suit: 'espadas', name: '2 de espadas' },
+  { value: 32, suit: 'paus', name: '2 de paus' },
+  { value: 33, suit: 'ouro', name: '3 de ouro' },
+  { value: 34, suit: 'espadas', name: '3 de espadas' },
+  { value: 35, suit: 'copas', name: '3 de copas' },
+  { value: 36, suit: 'paus', name: '3 de paus' },
+  { value: 37, suit: 'espadas', name: '7 de espadas' },
+  { value: 38, suit: 'ouro', name: '7 de ouro' },
+  { value: 39, suit: 'espadas', name: 'espadao' },
+  { value: 40, suit: 'paus', name: 'pauzao' },
+];
+
+export class card {
+  value: number;
+  suit: string;
+  name: string;
+}
