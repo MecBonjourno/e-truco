@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import { CARDS } from './cards.ts';
 
 function App() {
@@ -6,6 +6,7 @@ function App() {
   const [card2, setCard2] = useState('');
   const [hand1, setHand1] = useState([]);
   const [hand2, setHand2] = useState([]);
+  const [pcPick, setPCPick] = useState();
 
   // function PickCard({ value }) {
   //   // let arrayOfCards = CARDS.map(card => card);
@@ -19,6 +20,10 @@ function App() {
   //   return arrayOfCards[Math.floor(Math.random() * arrayOfCards.length)];
   // }
 
+  function PCGetRandomCardDumbAF() {
+    hand2.map(item => item.map(subItem => setPCPick(subItem.value)));
+  }
+
   function getHand1() {
     let arrayOfHand = CARDS.map(card => card);
     const readyHand = [];
@@ -30,7 +35,6 @@ function App() {
     readyHand.push(getThree);
     console.log('Hand 1 (for user): ' + JSON.stringify(readyHand));
     setHand1(readyHand);
-    // return readyHand;
   }
 
   function getHand2() {
@@ -44,14 +48,14 @@ function App() {
     readyHand.push(getThree);
     console.log('Hand 2 (PC):' + JSON.stringify(readyHand));
     setHand2(readyHand);
-    // return readyHand;
   }
 
   useEffect(() => {
     getHand1();
     getHand2();
     console.log('dentro do use effect: ' + pickCard1);
-  }, [pickCard1]);
+    console.log('dentro do use effect o pc pegou: ' + JSON.stringify(pcPick));
+  }, []);
 
   // function GiveCards() {
   //   useEffect(() => {
@@ -82,19 +86,30 @@ function App() {
 
   // CompareCards();
 
-  const TestRender = ({ hand }) => {
-    return (
-      <>
-        {hand.map(item =>
-          item.map(item => (
-            <div key={item.id}>
-              <button type="button">{item.name}</button>
-            </div>
-          ))
-        )}
-      </>
-    );
-  };
+  // const TestRender = ({ hand }) => {
+  //   return (
+  //     <>
+  //       {hand.map(item =>
+  //         item.map(item => (
+  //           <div key={item.id}>
+  //             <button type="button">{item.name}</button>
+  //           </div>
+  //         ))
+  //       )}
+  //     </>
+  //   );
+  // };
+
+  function CompareCardsV2() {
+    if (pickCard1 > pcPick) {
+      console.log('ganho mano: ');
+    } else {
+      console.log('perdeu mano: ');
+    }
+    if (pickCard1 === pcPick) {
+      console.log('deu pate: ');
+    }
+  }
 
   return (
     <div className="App">
@@ -103,17 +118,19 @@ function App() {
       </header>
       <div>
         <h3>Suas Cartas</h3>
-        <p>COMENTA DESCOMENTA</p>
+        {/* <p>COMENTA DESCOMENTA</p> */}
         {hand1.map(item =>
           item.map(item => (
             <div key={item.id}>
               <button
                 type="button"
                 onClick={function (e) {
+                  e.preventDefault();
                   setPickCard1(item.value);
-                  console.log(JSON.stringify(item));
-                  console.log(item.value);
-                  console.log('valor da carta: ' + JSON.stringify(pickCard1));
+                  PCGetRandomCardDumbAF();
+                  // console.log(JSON.stringify(item));
+                  // console.log(item.value);
+                  // console.log('valor da carta: ' + JSON.stringify(pickCard1));
                 }}
               >
                 {item.name}
@@ -121,7 +138,9 @@ function App() {
             </div>
           ))
         )}
-        {/* <TestRender hand={hand1} /> */}
+        {console.log('CARALHO EU ME ODEIO: ' + pickCard1, pcPick)}
+        {console.log('Pc ta muito louco: ' + JSON.stringify(pcPick))}
+        {CompareCardsV2()}
       </div>
     </div>
   );
